@@ -1,6 +1,7 @@
 import { Component } from "react";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
+import { PrimaryTitle, SecondaryTitle } from "./App.styled";
 
 class App extends Component {
   state = {
@@ -16,9 +17,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>Phonebook</h1>
+        <PrimaryTitle>Phonebook</PrimaryTitle>
         <ContactForm />
-        <h2>Contacts</h2>
+        <SecondaryTitle>Contacts</SecondaryTitle>
         <ContactList contacts={this.state.contacts} />
       </>
     );

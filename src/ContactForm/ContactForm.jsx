@@ -1,8 +1,10 @@
+import { Form, Label, Input, Button } from "./ContactForm.styled";
+
 const ContactForm = () => {
   return (
-    <form action="">
-      <label htmlFor="name">Name</label>
-      <input
+    <Form action="">
+      <Label htmlFor="name">Name</Label>
+      <Input
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -10,8 +12,8 @@ const ContactForm = () => {
         required
       />
 
-      <button type="submit">Add contact</button>
-    </form>
+      <Button type="submit">Add contact</Button>
+    </Form>
   );
 };
 
