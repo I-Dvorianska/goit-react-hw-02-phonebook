@@ -5,8 +5,12 @@ const ContactList = ({ contacts }) => {
     <div>
       <List>
         {contacts.map((contact) => {
-          const { id, name } = contact;
-          return <ListItem key={id}>{name}</ListItem>;
+          const { id, name, number } = contact;
+          return (
+            <ListItem key={id}>
+              {name} - {number}
+            </ListItem>
+          );
         })}
       </List>
     </div>
