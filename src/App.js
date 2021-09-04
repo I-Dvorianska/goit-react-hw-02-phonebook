@@ -16,6 +16,19 @@ class App extends Component {
     filter: "",
   };
 
+  handleFilter = (text) => {
+    this.setState({ filter: text });
+  };
+
+  visibleContacts = () => {
+    const { filter, contacts } = this.state;
+
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   addContact = (name, number) => {
     const { contacts } = this.state;
 
@@ -31,14 +44,15 @@ class App extends Component {
   };
 
   render() {
+    const { addContact, handleFilter, visibleContacts, state } = this;
     return (
       <>
         <PrimaryTitle>Phonebook</PrimaryTitle>
-        <ContactForm onSubmit={this.addContact} />
+        <ContactForm onSubmit={addContact} />
 
         <SecondaryTitle>Contacts</SecondaryTitle>
-        <Filter />
-        <ContactList contacts={this.state.contacts} />
+        <Filter onChange={handleFilter} value={state.filter} />
+        <ContactList contacts={visibleContacts()} />
       </>
     );
   }
