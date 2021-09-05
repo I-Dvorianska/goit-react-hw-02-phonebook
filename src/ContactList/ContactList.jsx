@@ -1,6 +1,6 @@
 import { List, ListItem, Button } from "./ContactList.styled";
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, deleteId }) => {
   return (
     <div>
       <List>
@@ -8,7 +8,10 @@ const ContactList = ({ contacts }) => {
           const { id, name, number } = contact;
           return (
             <ListItem key={id}>
-              {name} - {number} <Button type="button">Delete</Button>
+              {name} - {number}{" "}
+              <Button type="button" onClick={() => deleteId(id)}>
+                Delete
+              </Button>
             </ListItem>
           );
         })}

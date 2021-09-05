@@ -44,8 +44,16 @@ class App extends Component {
         });
   };
 
+  deleteContact = (id) => {
+    const { contacts } = this.state;
+    this.setState({
+      contacts: contacts.filter((contact) => contact.id !== id),
+    });
+  };
+
   render() {
-    const { addContact, handleFilter, visibleContacts, state } = this;
+    const { addContact, handleFilter, visibleContacts, state, deleteContact } =
+      this;
     return (
       <div>
         <PrimaryTitle>Phonebook</PrimaryTitle>
@@ -53,7 +61,7 @@ class App extends Component {
 
         <SecondaryTitle>Contacts</SecondaryTitle>
         <Filter onChange={handleFilter} value={state.filter} />
-        <ContactList contacts={visibleContacts()} />
+        <ContactList contacts={visibleContacts()} deleteId={deleteContact} />
       </div>
     );
   }
