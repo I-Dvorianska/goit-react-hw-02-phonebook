@@ -31,29 +31,30 @@ class App extends Component {
 
   addContact = (name, number) => {
     const { contacts } = this.state;
-
     const newContact = {
       id: uuidv4(),
       name,
       number,
     };
 
-    this.setState({
-      contacts: [newContact, ...contacts],
-    });
+    contacts.some((contact) => contact.name === newContact.name)
+      ? alert(`${newContact.name} такое имя уже есть`)
+      : this.setState({
+          contacts: [newContact, ...contacts],
+        });
   };
 
   render() {
     const { addContact, handleFilter, visibleContacts, state } = this;
     return (
-      <>
+      <div>
         <PrimaryTitle>Phonebook</PrimaryTitle>
         <ContactForm onSubmit={addContact} />
 
         <SecondaryTitle>Contacts</SecondaryTitle>
         <Filter onChange={handleFilter} value={state.filter} />
         <ContactList contacts={visibleContacts()} />
-      </>
+      </div>
     );
   }
 }
