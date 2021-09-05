@@ -38,7 +38,7 @@ class App extends Component {
     };
 
     contacts.some((contact) => contact.name === newContact.name)
-      ? alert(`${newContact.name} такое имя уже есть`)
+      ? alert(`${newContact.name} is already in contacts`)
       : this.setState({
           contacts: [newContact, ...contacts],
         });
