@@ -55,14 +55,14 @@ class App extends Component {
     const { addContact, handleFilter, visibleContacts, state, deleteContact } =
       this;
     return (
-      <div>
+      <>
         <PrimaryTitle>Phonebook</PrimaryTitle>
         <ContactForm onSubmit={addContact} />
 
         <SecondaryTitle>Contacts</SecondaryTitle>
         <Filter onChange={handleFilter} value={state.filter} />
         <ContactList contacts={visibleContacts()} deleteId={deleteContact} />
-      </div>
+      </>
     );
   }
 }
